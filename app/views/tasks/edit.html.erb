@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>タスク編集</h1>
+
+  <%= form_with model: @task, local: true do |form| %>
+    <div>
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div>
+      <%= form.label :detail %>
+      <%= form.text_area :detail, rows: 5 %>
+    </div>
+
+    <div>
+      <label>
+        <%= form.check_box :completed %>
+        完了
+      </label>
+    </div>
+
+    <div class="new-button-wrapper">
+      <%= form.submit "更新", class: "button" %>
+    </div>
+  <% end %>
+
+  <div style="margin-top: 30px; text-align: center;">
+    <%= link_to "一覧に戻る", root_path, class: "button" %>
+  </div>
+</div>

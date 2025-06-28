@@ -1,0 +1,36 @@
+<!-- app/views/tasks/show.html.erb -->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= @task.title %></title>
+  <%= stylesheet_link_tag 'tasks', media: 'all' %>
+</head>
+<body>
+  <div class="container">
+    <h1><%= @task.title %></h1>
+
+    <div class="task-item">
+      <h2>詳細</h2>
+      <p><%= simple_format(@task.detail) %></p>
+
+      <p>
+        完了:
+        <% if @task.completed %>
+          <span class="completed">はい</span>
+        <% else %>
+          <span class="not-completed">いいえ</span>
+        <% end %>
+      </p>
+    </div>
+
+    <div class="actions">
+      <%= link_to "編集", edit_task_path(@task), class: "edit" %>
+      <%= link_to "一覧に戻る", root_path, class: "button" %>
+      <%= button_to "削除", task_path(@task), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "delete" %>
+    </div>
+  </div>
+</body>
+</html>
